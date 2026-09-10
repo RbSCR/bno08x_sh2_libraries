@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef BNO08X_SH2_DRIVER__I2C_INTERFACE_HPP_
-#define BNO08X_SH2_DRIVER__I2C_INTERFACE_HPP_
+#ifndef BNO08X__I2C_INTERFACE_HPP_
+#define BNO08X__I2C_INTERFACE_HPP_
 
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
@@ -21,6 +21,7 @@
 #include <sys/time.h>
 #include <unistd.h>
 
+#include <algorithm>
 #include <cstring>
 #include <iostream>
 #include <string>
@@ -148,4 +149,4 @@ private:
   uint8_t i2c_addr_;
 };
 
-#endif  // BNO08X_SH2_DRIVER__I2C_INTERFACE_HPP_
+#endif  // BNO08X__I2C_INTERFACE_HPP_

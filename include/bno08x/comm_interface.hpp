@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef BNO08X_SH2_DRIVER__COMM_INTERFACE_HPP_
-#define BNO08X_SH2_DRIVER__COMM_INTERFACE_HPP_
+#ifndef BNO08X__COMM_INTERFACE_HPP_
+#define BNO08X__COMM_INTERFACE_HPP_
 
 #include <sys/time.h>
 
@@ -44,4 +44,4 @@ public:
   }
 };
 
-#endif  // BNO08X_SH2_DRIVER__COMM_INTERFACE_HPP_
+#endif  // BNO08X__COMM_INTERFACE_HPP_
