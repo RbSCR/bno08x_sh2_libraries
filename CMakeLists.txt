@@ -119,7 +119,7 @@ if(BUILD_TESTING)
 
   ament_add_gmock(test_driver_watchdog
     test/watchdog_test.cpp
-    )
+  )
   if(TARGET test_driver_watchdog)
     target_include_directories(test_driver_watchdog PUBLIC
       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

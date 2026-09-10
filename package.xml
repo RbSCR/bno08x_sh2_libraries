@@ -20,7 +20,7 @@
   <test_depend>ament_cmake_pep257</test_depend>
   <test_depend>ament_cmake_xmllint</test_depend>
   <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_cmake</test_depend>
+  <test_depend>ament_cmake_lint_cmake</test_depend>
   <test_depend>launch_testing_ament_cmake</test_depend>
 
   <export>
