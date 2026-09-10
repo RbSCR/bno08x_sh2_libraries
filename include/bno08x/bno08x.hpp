@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef BNO08X_SH2_DRIVER__BNO08X_HPP_
-#define BNO08X_SH2_DRIVER__BNO08X_HPP_
+#ifndef BNO08X__BNO08X_HPP_
+#define BNO08X__BNO08X_HPP_
 
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
@@ -74,4 +74,4 @@ private:
   bool reset_occurred_;
 };
 
-#endif  // BNO08X_SH2_DRIVER__BNO08X_HPP_
+#endif  // BNO08X__BNO08X_HPP_

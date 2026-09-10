@@ -12,58 +12,51 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef BNO08X_SH2_DRIVER__LOGGER_H_
-#define BNO08X_SH2_DRIVER__LOGGER_H_
+#ifndef BNO08X__LOGGER_H_
+#define BNO08X__LOGGER_H_
 
 #include <unistd.h>
 
-#include <iostream>
 #include <cstring>
+#include <iostream>
 #include <sstream>
 
 // Define DEBUG_LOG_ENABLED to enable debug logs at compile time
 // #define DEBUG_LOG_ENABLED
 
 #ifdef DEBUG_LOG_ENABLED
-#define DEBUG_ONLY(code)                                                   \
-  do  \
-  {                                                                        \
-    std::cout << "DEBUG: " << std::endl;                                   \
-    code                                                                   \
+#define DEBUG_ONLY(code)                 \
+  do {                                   \
+    std::cout << "DEBUG: " << std::endl; \
+    code                                 \
   } while (0)  // End DEBUG_ONLY
 
-#define DEBUG_LOG(message)                                                 \
-  do                                                                       \
-  {                                                                        \
-    std::ostringstream oss;                                                \
-    oss << message;                                                        \
-    std::cout << "DEBUG: " << oss.str() << std::endl;                      \
+#define DEBUG_LOG(message)                            \
+  do {                                                \
+    std::ostringstream oss;                           \
+    oss << message;                                   \
+    std::cout << "DEBUG: " << oss.str() << std::endl; \
   } while (0)  // End DEBUG_LOG
 
-#define DEBUG_LOG_BUFFER(buffer, length)                                   \
-  do                                                                       \
-  {                                                                        \
-    std::cout << "DEBUG BUFFER: ";                                         \
-    for (size_t i = 0; i < length; ++i)                                    \
-    {                                                                      \
-      std::cout << std::hex << static_cast<int>(buffer[i]) << " ";         \
-    }                                                                      \
-    std::cout << std::dec << std::endl; /* Reset to default formatting */  \
+#define DEBUG_LOG_BUFFER(buffer, length)                                  \
+  do {                                                                    \
+    std::cout << "DEBUG BUFFER: ";                                        \
+    for (size_t i = 0; i < length; ++i) {                                 \
+      std::cout << std::hex << static_cast<int>(buffer[i]) << " ";        \
+    }                                                                     \
+    std::cout << std::dec << std::endl; /* Reset to default formatting */ \
   } while (0)  // End DEBUG_LOG_BUFFER
 #else
 // When DEBUG_LOG_ENABLED is not defined, compile out debug logs
-#define DEBUG_ONLY(code)                                                    \
-  do                                                                        \
-  {                                                                         \
+#define DEBUG_ONLY(code) \
+  do {                   \
   } while (0)  // End DEBUG_ONLY (No-op)
-#define DEBUG_LOG(message)                                                  \
-  do                                                                        \
-  {                                                                         \
+#define DEBUG_LOG(message) \
+  do {                     \
   } while (0)  // End DEBUG_LOG (No-op)
-#define DEBUG_LOG_BUFFER(buffer, length)                                    \
-  do                                                                        \
-  {  \
+#define DEBUG_LOG_BUFFER(buffer, length) \
+  do {                                   \
   } while (0)  // End DEBUG_LOG_BUFFER (No-op)
 #endif
 
-#endif  // BNO08X_SH2_DRIVER__LOGGER_H_
+#endif  // BNO08X__LOGGER_H_
