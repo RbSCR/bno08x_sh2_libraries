@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>bno08x_sh2_driver</name>
+  <version>0.0.0</version>
+  <description>ROS2 driver the CEVA BNO08x IMU's over I2C.</description>
+  <maintainer email="6249544+RbSCR@users.noreply.github.com">RbSCR</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+
+  <!-- Only the linters mentioned here will be used in auto-linting: -->
+  <!--     cppcheck, cpplint, pep257, xmllint, lint_cmake -->
+
+  <test_depend>ament_cmake_cppcheck</test_depend>
+  <test_depend>ament_cmake_cpplint</test_depend>
+  <test_depend>ament_cmake_gmock</test_depend>
+  <test_depend>ament_cmake_gtest</test_depend>
+  <test_depend>ament_cmake_pep257</test_depend>
+  <test_depend>ament_cmake_xmllint</test_depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_cmake</test_depend>
+  <test_depend>launch_testing_ament_cmake</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
