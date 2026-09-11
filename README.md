@@ -40,11 +40,46 @@ colcon build --packages-select bno08x_sh2_libraries
 
 ## Usage
 
-To use the libraries in another ROS package add a dependency to `bno08x_sh2_libraries` in the `package.xml` and `CMakeLists.txt`.
+To use the libraries in another ROS package update your `package.xml`, `CMakeLists.txt` and cpp- or hpp-file(s).
 
-TODO provide short example
+**package.xml:**
 
-This package is not available on a distro, so you need to install this package in your workspace (see above).
+Add a `depend`:
+
+```xml
+...
+<depend>bno08x_sh2_libraries</depend>
+...
+```
+
+**CMakeLists.txt:**
+
+Add a `find_package` and a `target_link_libraries`:
+
+```cmake
+...
+find_package(bno08x_sh2_libraries REQUIRED)
+...
+target_link_libraries(<YOUR-EXECUTABLE/LIBRARY>
+  ${bno08x_sh2_libraries_TARGETS}
+  ...
+)
+...
+```
+
+**cpp/hpp-files**:
+
+Add includes:
+
+```cpp
+...
+#include "bno08x/bno08x.hpp"
+#include "bno08x/i2c_interface.hpp"
+#include "bno08x/watchdog.hpp"
+...
+```
+
+This package is not available on a distro, so you need to install this package in your workspace (see [above](#installation)).
 
 ## Datasheet and documents
 
@@ -62,15 +97,15 @@ This package uses the SH-2 protocol library provided by Hillcrest Labs.
 It can be found in the `include/sh2` and `src/sh2` directories.
 Visit the official repository here: [SH-2 Protocol Library](https://github.com/ceva-dsp/sh2.git)
 
-This package also uses the code from the "BNO08X ROS Driver" package (see link below).
+This package also uses the code from the [BNO08X ROS Driver](https://github.com/bnbhat/bno08x_ros2_driver) package by bnbhat.
 The code has been updated with new functionality that is used in another ROS2 Control plugin.
-It can be found in the `include/bno08x` and `src/bno08x` directories.
+The (updated) code can be found in the `include/bno08x` and `src/bno08x` directories.
 
 ### Inspiration
 
 Inspiration for this package came from:
 
-- the "BNO08X ROS Driver" package by bnbhat (<https://github.com/bnbhat/bno08x_ros2_driver>)
+- the [BNO08X ROS Driver](https://github.com/bnbhat/bno08x_ros2_driver) package by bnbhat.
 
 ## License
 
