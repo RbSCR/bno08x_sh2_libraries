@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>bno08x_sh2_driver</name>
+  <name>bno08x_sh2_libraries</name>
   <version>0.0.0</version>
-  <description>ROS2 driver the CEVA BNO08x IMU's over I2C.</description>
+  <description>ROS2 libraries (bno08x, sh2) for the CEVA BNO08x IMU's over I2C.</description>
   <maintainer email="6249544+RbSCR@users.noreply.github.com">RbSCR</maintainer>
   <license>Apache-2.0</license>
 

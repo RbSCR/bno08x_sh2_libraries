@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28.3)
-project(bno08x_sh2_driver)
+project(bno08x_sh2_libraries)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -13,51 +13,51 @@ endif()
 find_package(ament_cmake REQUIRED)
 
 
-# == SH2 LIBRARY ===============================================
+# == sh2 library ===============================================
 # Note sh2_library had it's own CmakeLists.txt (in include/sh2)
 #      renamed it so it isn't used anymore
-set(SH2_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/sh2)
+set(SH2_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/sh2)
 
-add_library(sh2_library
-  ${SH2_LIBRARY_DIR}/sh2.c
-  ${SH2_LIBRARY_DIR}/sh2_SensorValue.c
-  ${SH2_LIBRARY_DIR}/sh2_util.c
-  ${SH2_LIBRARY_DIR}/shtp.c
+add_library(sh2
+  ${SH2_DIR}/sh2.c
+  ${SH2_DIR}/sh2_SensorValue.c
+  ${SH2_DIR}/sh2_util.c
+  ${SH2_DIR}/shtp.c
 )
 
-target_compile_features(sh2_library PUBLIC c_std_99)
+target_compile_features(sh2 PUBLIC c_std_99)
 
-set_target_properties(sh2_library PROPERTIES POSITION_INDEPENDENT_CODE ON)
+set_target_properties(sh2 PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-target_compile_options(sh2_library
+target_compile_options(sh2
   PUBLIC -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable
 )
 
 # Make include directories available to downstream packages
-target_include_directories(sh2_library PUBLIC
+target_include_directories(sh2 PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
 
-# == BNO08x driver ==================================================
-set(BNO08X_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/bno08x)
+# == bno08xx library ==================================================
+set(BNO08X_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/bno08x)
 
-add_library(bno08x_library
-  ${BNO08X_LIBRARY_DIR}/bno08x.cpp
+add_library(bno08x
+  ${BNO08X_DIR}/bno08x.cpp
 )
 
-set_target_properties(bno08x_library PROPERTIES POSITION_INDEPENDENT_CODE ON)
+set_target_properties(bno08x PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-target_compile_options(bno08x_library
+target_compile_options(bno08x
   PUBLIC -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable
 )
 
-target_link_libraries(bno08x_library
-  sh2_library
+target_link_libraries(bno08x
+  sh2
 )
 
 # Make include directories available to downstream packages
-target_include_directories(bno08x_library PUBLIC
+target_include_directories(bno08x PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
@@ -66,12 +66,12 @@ target_include_directories(bno08x_library PUBLIC
 # ================================================================
 
 # Export targets so other packages can use find_package() to find them
-ament_export_targets(bno08x_sh2_driver_targets HAS_LIBRARY_TARGET)
+ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
 
 # --- Installation ---
 install(
-  TARGETS sh2_library bno08x_library
-  EXPORT bno08x_sh2_driver_targets
+  TARGETS sh2 bno08x
+  EXPORT export_${PROJECT_NAME}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
@@ -107,21 +107,21 @@ if(BUILD_TESTING)
   find_package(ament_cmake_gmock REQUIRED)
   find_package(launch_testing_ament_cmake REQUIRED)
 
-  # - - - bno08x _driver tests - - -
-  ament_add_gmock(test_driver_i2c_mock
+  # - - - bno08x tests - - -
+  ament_add_gmock(test_i2c_mock
     test/i2c_interface_mock_test.cpp
   )
-  if(TARGET test_driver_i2c_mock)
-    target_include_directories(test_driver_i2c_mock PUBLIC
+  if(TARGET test_i2c_mock)
+    target_include_directories(test_i2c_mock PUBLIC
       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     )
   endif()
 
-  ament_add_gmock(test_driver_watchdog
+  ament_add_gmock(test_watchdog
     test/watchdog_test.cpp
   )
-  if(TARGET test_driver_watchdog)
-    target_include_directories(test_driver_watchdog PUBLIC
+  if(TARGET test_watchdog)
+    target_include_directories(test_watchdog PUBLIC
       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     )
   endif()
