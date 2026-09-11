@@ -20,6 +20,7 @@
 #include <cstdint>
 
 #include "bno08x/logger.h"
+
 /**
  * @brief Interface for the communication with the BNO08x sensor
  * This class defines the interface for the communication with the BNO08x sensor.
