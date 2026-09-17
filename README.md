@@ -25,6 +25,8 @@ These libraries can be used in other ROS2 packages that need to use a CEVA BNO08
 
 ## Installation
 
+This package is not available in a distro, so you need to install this package in your workspace.
+
 Clone the repository:
 
 ```bash
@@ -40,7 +42,10 @@ colcon build --packages-select bno08x_sh2_libraries
 
 ## Usage
 
-To use the libraries in another ROS package update your `package.xml`, `CMakeLists.txt` and cpp- or hpp-file(s).
+To use the libraries in another ROS package you need to:
+
+- install this package (see [above](#installation))
+- update your `package.xml`, `CMakeLists.txt` and cpp- or hpp-file(s).
 
 **package.xml:**
 
@@ -79,7 +84,23 @@ Add includes:
 ...
 ```
 
-This package is not available on a distro, so you need to install this package in your workspace (see [above](#installation)).
+### Github-actions build workflow
+
+When you use a github-actions workflow to build your package, you need to add the `bno08x_sh2_dependendy.repos` file (provided in `misc/example-repo-file/`) to your package and update your workflow to use the file.
+
+If you use `ros-tooling/action-ros-ci` use this example:
+
+```yml
+...
+- name: Build and Test
+        uses: ros-tooling/action-ros-ci@0.4.8
+        id: action_ros_ci_step
+        with:
+          target-ros2-distro: <YOUR-DISTRO>
+          package-name: <YOUR-PACKAGE>
+          vcs-repo-file-url: "${{ github.workspace }}/<PATH-TO-FILE-IN-YOUR-PACKAGE>/bno08x_sh2_dependency.repos"
+          ...
+```
 
 ## Datasheet and documents
 
