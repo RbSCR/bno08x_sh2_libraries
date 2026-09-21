@@ -1,8 +1,7 @@
 # bno08x_sh2_libraries
 
 ![Project Status](https://img.shields.io/badge/Status-Work%20In%20Progress-orange)
-![ROS 2](https://img.shields.io/badge/ROS%202-Jazzy%20(Ubuntu%2024.04)-blue?style=flat&logo=ros&logoSize=auto)
-![ROS 2](https://img.shields.io/badge/ROS%202-Kilted%20(Ubuntu%2024.04)-blue?style=flat&logo=ros&logoSize=auto)
+![ROS 2](https://img.shields.io/badge/ROS%202-Jazzy%20|%20Kilted%20(Ubuntu%2024.04)-blue?style=flat&logo=ros&logoSize=auto)
 ![C++](https://img.shields.io/badge/C++-17-blue?style=flat&logo=cplusplus&logoColor=white)
 ![License](https://img.shields.io/github/license/RbSCR/bno08x_sh2_libraries?label=License)
 
@@ -23,7 +22,7 @@ These libraries can be used in other ROS2 packages that need to use a CEVA BNO08
 **⚠️ Status:**
 
 - Tested and validated, using another ROS package, on a Raspberry Pi 5 running ROS 2 Kilted/2026-08-21 (Ubuntu 24.04, aarch64) with real BNO085 hardware.
-- Not yet tested on ROS2 Jazzy
+- Tested and validated, using another ROS package, on a Raspberry Pi 5 running ROS 2 Jazzy/2026-09-11 (Ubuntu 24.04, aarch64) with real BNO085 hardware.
 - Work in progress
 
 ## Installation
