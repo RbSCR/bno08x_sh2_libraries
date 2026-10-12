@@ -11,6 +11,7 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(ament_cmake_gen_version_h REQUIRED)
 
 
 # == sh2 library ===============================================
@@ -130,3 +131,9 @@ if(BUILD_TESTING)
 endif()
 
 ament_package()
+
+# Generating a version header checks if the first argument is a library or executable TARGET
+# within the CmakeList.txt
+# Because this package doesn't have a target named after the package-name a small trick
+# to curcumvent this check and still generate a package version header.
+ament_generate_version_header(sh2 HEADER_PATH "version.h")
